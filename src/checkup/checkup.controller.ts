@@ -22,6 +22,7 @@ export class CheckupController {
   @UseInterceptors(FileInterceptor('files', multerOptions))
   async uploadFile(@UploadedFile() files: Express.Multer.File) {
     const PORT = process.env.PORT || 5000;
+
     return {
       message: 'File uploaded successfully',
       path: `http://localhost:${PORT}/checkup/file/${files.filename}`,

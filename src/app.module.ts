@@ -4,9 +4,15 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UtilsModule } from './utils/utils.module';
 import { CheckupModule } from './checkup/checkup.module';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
-  imports: [UtilsModule, CheckupModule, ConfigModule.forRoot()],
+  imports: [
+    UtilsModule,
+    CheckupModule,
+    ConfigModule.forRoot(),
+    ScheduleModule.forRoot(),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

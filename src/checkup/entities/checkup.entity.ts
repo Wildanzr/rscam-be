@@ -29,4 +29,6 @@ export class Checkup implements IPerson, ICheckup {
   advice: string;
   pictures: string[];
   videos: string[];
+  at: Date;
+  sync: boolean;
 }
