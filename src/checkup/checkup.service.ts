@@ -19,6 +19,7 @@ export class CheckupService {
     const DB_USER = process.env.DB_USER || 'admin';
     const DB_PASS = process.env.DB_PASS || 'admin';
     const DB_URL = `http://${DB_USER}:${DB_PASS}@${DB_HOST}:${DB_PORT}`;
+    console.log(DB_URL);
 
     this.db = Nano(DB_URL)
       .db.create('attachment')

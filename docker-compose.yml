@@ -21,8 +21,7 @@ services:
       - 8000:8000
     environment:
       - NODE_ENV=production
-      - CUSTOM_VAR=custom_value
-      - APP_PORT=8000
+      - PORT=8000
       - DB_HOST=db
       - DB_PORT=5984
       - DB_USER=superadmin

@@ -12,6 +12,9 @@ RUN npm install
 # Bundle app source
 COPY . .
 
+# Expose the port the app runs in
+EXPOSE 8000
+
 # Creates a "dist" folder with the production build
 RUN npm run build
 

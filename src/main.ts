@@ -11,5 +11,7 @@ async function bootstrap() {
     optionsSuccessStatus: 200,
   });
   await app.listen(PORT);
+
+  console.log(`Server running on port ${PORT}`);
 }
 bootstrap();
