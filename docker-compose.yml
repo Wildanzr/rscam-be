@@ -1,0 +1,31 @@
+version: '3'
+services:
+  db:
+    image: couchdb
+    container_name: rscam_db
+    ports:
+      - "5984:5984"
+    environment:
+      - COUCHDB_USER=superadmin
+      - COUCHDB_PASSWORD=superadmin
+    volumes:
+      - ./dbdata:/opt/couchdb/data
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rscam_app
+    ports:
+      - 8000:8000
+    environment:
+      - NODE_ENV=production
+      - CUSTOM_VAR=custom_value
+      - APP_PORT=8000
+      - DB_HOST=db
+      - DB_PORT=5984
+      - DB_USER=superadmin
+      - DB_PASS=superadmin
+    restart: unless-stopped
+
+volumes:
+  dbdata:
