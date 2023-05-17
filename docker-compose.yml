@@ -9,12 +9,14 @@ services:
       - COUCHDB_USER=superadmin
       - COUCHDB_PASSWORD=superadmin
     volumes:
-      - ./dbdata:/opt/couchdb/data
+      - couchdb_data:/usr/data/couchdb_data
   app:
     build:
       context: .
       dockerfile: Dockerfile
     container_name: rscam_app
+    depends_on:
+      - db
     ports:
       - 8000:8000
     environment:
@@ -28,4 +30,4 @@ services:
     restart: unless-stopped
 
 volumes:
-  dbdata:
+  couchdb_data:

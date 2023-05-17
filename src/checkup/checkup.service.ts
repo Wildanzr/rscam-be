@@ -20,16 +20,27 @@ export class CheckupService {
     const DB_PASS = process.env.DB_PASS || 'admin';
     const DB_URL = `http://${DB_USER}:${DB_PASS}@${DB_HOST}:${DB_PORT}`;
 
-    // this.db = Nano(DB_URL)
-    //   .db.create('attachment')
-    //   .then((res) => {
-    //     console.log(res);
-    //     return res;
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //     return err;
-    //   });
+    this.db = Nano(DB_URL)
+      .db.create('attachment')
+      .then((res) => {
+        console.log('Database created');
+        return res;
+      })
+      .catch((err) => {
+        console.log('Database already exists');
+        return err;
+      });
+
+    this.db = Nano(DB_URL)
+      .db.create('checkup')
+      .then((res) => {
+        console.log('Database created');
+        return res;
+      })
+      .catch((err) => {
+        console.log('Database already exists');
+        return err;
+      });
 
     this.checkup = Nano(DB_URL).use('checkup');
     this.attachment = Nano(DB_URL).use('attachment');
